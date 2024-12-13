@@ -1,101 +1,315 @@
-import Image from "next/image";
+import Wrapper from '@/components/Wrapper'
+import soe from '../../public/images/soe.jpeg'
+// import ProductReel from '@/components/ProductReel'
+import {
+  Button,
+  buttonVariants,
+} from '@/components/ui/button'
+import {
+  BookOpen,
+  GraduationCap,
+  Globe,
+  CheckCircle,
+  Leaf,
+  User,
+} from 'lucide-react'
+import Link from 'next/link'
+
+const schools = [
+  {
+    name: 'School of Engineering',
+    Icon: soe,
+    description:
+      'Master the art of software development with courses in Frontend, Backend, Cloud, and Cybersecurity.',
+    link: '/schools/engineering',
+  },
+  {
+    name: 'School of Product',
+    Icon: BookOpen,
+    description:
+      'Learn to design, market, and manage products that make a difference.',
+    link: '/schools/product',
+  },
+  {
+    name: 'School of Data',
+    Icon: Globe,
+    description:
+      'Dive into the world of data with courses in Analysis, Science, and Engineering.',
+    link: '/schools/data',
+  },
+  {
+    name: 'School of Entrepreneurship',
+    Icon: CheckCircle,
+    description:
+      'Gain foundational business skills and learn how to turn ideas into sustainable ventures.',
+    link: '/schools/entrepreneurship',
+  },
+  {
+    name: 'School of Skill Acquisition',
+    Icon: Leaf,
+    description:
+      'Acquire practical skills like public speaking, video editing, and graphic design to thrive in the modern workplace.',
+    link: '/schools/skill-acquisition',
+  },
+];
+
+const milestones = [
+  'Welcome',
+  'Personalized series of courses',
+  'Evaluation',
+  'Milestone',
+  'Certification'
+
+
+]
+
+const testimonials = [
+  {
+    name: "John Doe",
+    role: "Software Engineer",
+    testimonial: "SkilledIn's courses helped me transition from a beginner to a confident developer. Highly recommend!",
+    picture: "/images/intro.jpeg"
+  },
+  {
+    name: "Jane Smith",
+    role: "Product Manager",
+    testimonial: "The School of Product gave me the tools to manage products with efficiency and creativity.",
+    picture: '/images/test.jpeg'
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <section className="bg-fuchsia-50">
+        <Wrapper >
+          <div className="py-20 mx-auto text-center flex flex-col sm:flex-row items-center max-w-7xl">
+            {/* Image on the left side */}
+            <div className="flex-shrink-0 w-full sm:w-1/2">
+              <img
+                src="/images/intro.jpeg" 
+                alt="School of Engineering"
+                className="w-full h-auto object-cover rounded-lg bg-transparent" 
+              />
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* Content on the right side */}
+            <div className="sm:ml-8 mt-6 sm:mt-0 w-full sm:w-1/2">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                Your place for top-tier{' '}
+                <span className="text-fuchsia-900">skill-building programs</span>.
+              </h1>
+              <p className="mt-6 text-lg max-w-prose text-muted-foreground">
+                Welcome to SkilledIn. Every program on our platform is carefully curated
+                and verified by industry experts to ensure the highest standards of learning
+                and career growth.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <Link
+                  href="/products"
+                  className={buttonVariants()}>
+                  CREATE ACCOUNT
+                </Link>
+                <Button className={buttonVariants()}>
+                  OUR SCHOOLS
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Wrapper>
+      </section>
+
+
+
+      <section className="border-t border-gray-200 bg-gray-50">
+        <Wrapper className="py-20">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
+            Our Schools
+          </h2>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {schools.map((school) => (
+              <div
+                key={school.name}
+                className="flex flex-col justify-between text-center p-4 border rounded-lg shadow-sm hover:shadow-lg hover:-translate-y-2 transition-transform duration-300"
+              >
+                <div>
+                  <div className="flex justify-center mb-4">
+                    <div className="h-16 w-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-900">
+                      <img src="/images/intro.jpeg" alt={school.name} className="h-full w-full object-cover rounded-full" />
+                    </div>
+                  </div>
+                  <h3 className="text-base font-medium text-gray-900">
+                    {school.name}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground">
+                    {school.description}
+                  </p>
+                </div>
+                <div className="mt-6">
+                  <Link
+                    href={school.link}
+                    className="text-fuchsia-900 font-medium hover:underline"
+                  >
+                    Explore Courses →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+      <section className="bg-gray-50 py-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            {/* Video Section */}
+            <div className="relative w-full">
+              <iframe
+                className="rounded-lg shadow-lg w-full h-64 md:h-80"
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                title="Skilledin Introduction Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+
+            {/* Why Skilledin Section */}
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                Why Choose Skilledin?
+              </h2>
+              <div className="space-y-6">
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-fuchsia-900 rounded-full flex items-center justify-center">
+                    <User />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      Comprehensive Learning
+                    </h3>
+                    <p className="text-gray-700">
+                      Access a wide range of courses and resources tailored to your career needs.
+                    </p>
+                  </div>
+                </div>
+
+               
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-fuchsia-900 rounded-full flex items-center justify-center">
+                    <User />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      Expert Guidance
+                    </h3>
+                    <p className="text-gray-700">
+                      Learn from industry professionals who bring real-world experience to every lesson.
+                    </p>
+                  </div>
+                </div>
+
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-fuchsia-900 rounded-full flex items-center justify-center">
+                    <User />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      Achieve Your Goals
+                    </h3>
+                    <p className="text-gray-700">
+                      Gain the skills you need to excel in your chosen field and stand out from the crowd.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+      <section className="py-20 bg-fuchsia-50">
+        {/* <Wrapper>
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">
+            Learning Pathways
+          </h2>
+          <div className="space-y-8">
+            {milestones.map((milestone, index) => (
+              <div key={index} className="flex flex-col items-center text-center">
+               
+              </div>
+            ))}
+          </div>
+        </Wrapper> */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4 text-center pb-10 pr-20">Learning Pathway</h2>
+          <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-center gap-8">
+           
+            <div className="flex-shrink-0 w-full lg:w-1/2">
+              <img
+                src="/images/intro.jpeg"
+                alt="Learning Journey"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="space-y-6 w-full max-w-md">
+              {milestones.map((step, index) => (
+                <div key={index} className="flex items-center gap-4">
+                  <div className="w-10 h-10 flex items-center justify-center border-2 border-fuchsia-600 rounded-full text-black font-bold">
+                    {index + 1}
+                  </div>
+
+                  <button
+                    className="px-6 py-3 w-full bg-fuchsia-950 text-white rounded-full text-left hover:bg-fuchsia-900 transition-colors"
+                  >
+                    {step}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+
+
+      </section>
+
+      <section className="py-20 bg-neutral-950">
+        <Wrapper>
+          <h2 className="text-3xl font-bold text-white text-center mb-10">
+            TESTIMONIALS
+          </h2>
+          <div className="space-y-8 bg-f">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-4 bg-fuchsia-50 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              >
+
+                <img
+                  src={testimonial.picture}
+                  alt={testimonial.name}
+                  className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-fuchsia-900"
+                />
+
+                <div className="flex flex-col flex-grow text-center md:text-left">
+
+                  <div className=" text-black rounded-lg p-4 relative w-full">
+                    <p className="text-sm">{testimonial.testimonial}</p>
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-purple-600">
+                    - {testimonial.name}, <span className="text-fuchsia-900">{testimonial.role}</span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Wrapper>
+
+      </section>
+
+
+
+    </>
+  )
 }

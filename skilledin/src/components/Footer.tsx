@@ -14,9 +14,9 @@ const Footer = () => {
   ]
 
   return (
-    <footer className='bg-blue-950 text-white flex-grow-0'>
+    <footer className='bg-neutral-900 text-white flex-grow-0'>
       <Wrapper>
-        <div className='border-t border-blue-700'>
+        <div className=''>
           {pathsToMinimize.includes(pathname) ? null : (
             <div className='pb-8 pt-16'>
               <div className='flex justify-center'>
@@ -31,7 +31,7 @@ const Footer = () => {
                 <div className='absolute inset-0 overflow-hidden rounded-lg'>
                   <div
                     aria-hidden='true'
-                    className='absolute bg-blue-950 inset-0 bg-gradient-to-br bg-opacity-90'
+                    className='absolute inset-0 bg-gradient-to-br bg-opacity-90'
                   />
                 </div>
 

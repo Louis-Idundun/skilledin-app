@@ -27,7 +27,7 @@ const Navbar = async () => {
 
               <div className='ml-4 flex lg:ml-0'>
                 <Link href='/'>
-                  <h1 className='text-2xl font-semibold'>Skilledin</h1>
+                  <h1 className='text-2xl font-semibold text-fuchsia-900'>Skilledin</h1>
                 </Link>
               </div>
 
@@ -83,8 +83,10 @@ const Navbar = async () => {
                     </Link>
                   <Link
                       href='/sign-in'
-                      className={buttonVariants()}>
-                      Login
+                      className={buttonVariants({
+                        variant: 'ghost',
+                      })}>
+                      Signup/Login
                     </Link>
 
                   {/* {user ? null : (
@@ -107,10 +109,8 @@ const Navbar = async () => {
                   )} */}
                   <Link
                       href='/sign-up'
-                      className={buttonVariants({
-                          variant: 'outline'
-                      })}>
-                      Sign up
+                      className={buttonVariants()}>
+                      APPLY NOW
                     </Link>
 
                   {/* {user ? (

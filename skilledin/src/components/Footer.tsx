@@ -42,7 +42,7 @@ const Footer = () => {
                     knowledge in just minutes.{' '}
                     <Link
                       href='/sign-in?as=seller'
-                      className='whitespace-nowrap font-semibold text-blue-300 hover:text-white'>
+                      className='whitespace-nowrap font-semibold text-fuchsia-900 hover:text-white'>
                       Start learning today &rarr;
                     </Link>
                   </p>

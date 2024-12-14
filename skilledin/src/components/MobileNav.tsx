@@ -104,7 +104,7 @@ const MobileNav = () => {
             <div className='flow-root'>
                 
                 <Link
-                  onClick={() => closeOnCurrent('/sign-in')}
+                  onClick={() => closeOnCurrent('/home')}
                   href='/sign-in'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Home
@@ -113,7 +113,7 @@ const MobileNav = () => {
             <div className='flow-root'>
                 
                 <Link
-                  onClick={() => closeOnCurrent('/sign-in')}
+                  onClick={() => closeOnCurrent('/schools')}
                   href='/sign-in'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Schools
@@ -122,7 +122,7 @@ const MobileNav = () => {
             <div className='flow-root'>
                 
                 <Link
-                  onClick={() => closeOnCurrent('/sign-in')}
+                  onClick={() => closeOnCurrent('/why')}
                   href='/sign-in'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Why Skilledin
@@ -131,7 +131,7 @@ const MobileNav = () => {
             <div className='flow-root'>
                 
                 <Link
-                  onClick={() => closeOnCurrent('/sign-in')}
+                  onClick={() => closeOnCurrent('/blog')}
                   href='/sign-in'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Blog
@@ -140,13 +140,13 @@ const MobileNav = () => {
             <div className='flow-root'>
                 
                 <Link
-                  onClick={() => closeOnCurrent('/sign-in')}
+                  onClick={() => closeOnCurrent('/faq')}
                   href='/sign-in'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   FAQ
                 </Link>
               </div>
-              <div className='flow-root'>
+              {/* <div className='flow-root'>
                 
                 <Link
                   onClick={() => closeOnCurrent('/sign-in')}
@@ -154,15 +154,24 @@ const MobileNav = () => {
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Sign in
                 </Link>
+              </div> */}
+              <div className='flow-root'>
+                <Link
+                  onClick={() => closeOnCurrent('/login')}
+                  href='/sign-up'
+                  className='-m-2 block p-2 font-medium text-gray-900'>
+                  Login
+                </Link>
               </div>
               <div className='flow-root'>
                 <Link
                   onClick={() => closeOnCurrent('/sign-up')}
                   href='/sign-up'
                   className='-m-2 block p-2 font-medium text-gray-900'>
-                  Sign up
+                  APPLY NOW
                 </Link>
               </div>
+              
             </div>
           </div>
         </div>

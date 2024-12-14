@@ -86,7 +86,7 @@ const Navbar = async () => {
                       className={buttonVariants({
                         variant: 'ghost',
                       })}>
-                      Signup/Login
+                      Login
                     </Link>
 
                   {/* {user ? null : (

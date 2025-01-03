@@ -105,7 +105,7 @@ const MobileNav = () => {
                 
                 <Link
                   onClick={() => closeOnCurrent('/home')}
-                  href='/sign-in'
+                  href='/'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Home
                 </Link>
@@ -114,7 +114,7 @@ const MobileNav = () => {
                 
                 <Link
                   onClick={() => closeOnCurrent('/schools')}
-                  href='/sign-in'
+                  href='#schools'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Schools
                 </Link>
@@ -123,7 +123,7 @@ const MobileNav = () => {
                 
                 <Link
                   onClick={() => closeOnCurrent('/why')}
-                  href='/sign-in'
+                  href='/#why'
                   className='-m-2 block p-2 font-medium text-gray-900'>
                   Why Skilledin
                 </Link>

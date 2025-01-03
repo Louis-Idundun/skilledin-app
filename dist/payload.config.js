@@ -9,8 +9,8 @@ var db_mongodb_1 = require("@payloadcms/db-mongodb");
 var richtext_slate_1 = require("@payloadcms/richtext-slate");
 var path_1 = __importDefault(require("path"));
 var dotenv_1 = __importDefault(require("dotenv"));
-var Users_1 = require("./collections/Users");
 //import { Products } from './collections/Products/Products'
+//import { Users } from './collections/users'
 //import { Media } from './collections/Media'
 //import { ProductFiles } from './collections/ProductFile'
 //import { Orders } from './collections/Orders'
@@ -19,12 +19,12 @@ dotenv_1.default.config({
 });
 exports.default = (0, config_1.buildConfig)({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-    collections: [Users_1.Users], //add product, productfiles, orders, media and users to the list of collection
+    collections: [], //add product, productfiles, orders, media and users to the list of collection
     routes: {
         admin: '/sell',
     },
     admin: {
-        user: 'users',
+        //  user: 'users',
         bundler: (0, bundler_webpack_1.webpackBundler)(),
         meta: {
             titleSuffix: '- SkilledIn',

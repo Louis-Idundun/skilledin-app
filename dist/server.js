@@ -1,37 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -76,21 +43,25 @@ var express_1 = __importDefault(require("express"));
 //import { getPayloadClient } from './get-payload'
 var payload_1 = __importDefault(require("payload"));
 var next_util_1 = require("./next-util");
-var trpcExpress = __importStar(require("@trpc/server/adapters/express"));
-var trpc_1 = require("./trpc");
+//import { stripeWebhookHandler } from './webhooks'
+var build_1 = __importDefault(require("next/dist/build"));
+var path_1 = __importDefault(require("path"));
 var dotenv_1 = __importDefault(require("dotenv"));
 //import cartRouter from './trpc/authenticateMiddleware'
 var get_payload_1 = require("./get-payload");
 dotenv_1.default.config();
 var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
-var createContext = function (_a) {
-    var req = _a.req, res = _a.res;
-    return ({
-        req: req,
-        res: res,
-    });
-};
+// const createContext = ({
+//   req,
+//   res,
+// }: trpcExpress.CreateExpressContextOptions) => ({
+//   req,
+//   res,
+// })
+// export type ExpressContext = inferAsyncReturnType<
+//   typeof createContext
+// >
 // export type WebhookRequest = IncomingMessage & {
 //   rawBody: Buffer
 // }
@@ -108,43 +79,27 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                             });
                         }); },
                     },
-                })
-                //   if (process.env.NEXT_BUILD) {
-                //     app.listen(PORT, async () => {
-                //       payloads.logger.info(
-                //         'Next.js is building for production'
-                //       )
-                //       // @ts-expect-error
-                //       await nextBuild(path.join(__dirname, '../'))
-                //       process.exit()
-                //     })
-                //     return
-                //   }
-                //const cartRouter = express.Router()
-                //   cartRouter.use(payload.authenticate)
-                //   cartRouter.get('/', (req, res) => {
-                //     const request = req as PayloadRequest
-                //     if (!request.user)
-                //       return res.redirect('/sign-in?origin=cart')
-                //     const parsedUrl = parse(req.url, true)
-                //     const { query } = parsedUrl
-                //     return nextApp.render(req, res, '/cart', query)
-                //   })
-                //   app.use('/cart', cartRouter)
-            ];
+                })];
             case 1:
                 payloads = _a.sent();
-                //   if (process.env.NEXT_BUILD) {
-                //     app.listen(PORT, async () => {
-                //       payloads.logger.info(
-                //         'Next.js is building for production'
-                //       )
-                //       // @ts-expect-error
-                //       await nextBuild(path.join(__dirname, '../'))
-                //       process.exit()
-                //     })
-                //     return
-                //   }
+                if (process.env.NEXT_BUILD) {
+                    app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    payloads.logger.info('Next.js is building for production');
+                                    // @ts-expect-error
+                                    return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, '../'))];
+                                case 1:
+                                    // @ts-expect-error
+                                    _a.sent();
+                                    process.exit();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); });
+                    return [2 /*return*/];
+                }
                 //const cartRouter = express.Router()
                 //   cartRouter.use(payload.authenticate)
                 //   cartRouter.get('/', (req, res) => {
@@ -156,15 +111,19 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 //     return nextApp.render(req, res, '/cart', query)
                 //   })
                 //   app.use('/cart', cartRouter)
-                app.use('/api/trpc', trpcExpress.createExpressMiddleware({
-                    router: trpc_1.appRouter,
-                    createContext: createContext,
-                }));
+                // app.use(
+                //   '/api/trpc',
+                //   trpcExpress.createExpressMiddleware({
+                //     router: appRouter,
+                //     createContext,
+                //   })
+                // )
                 app.use(function (req, res) { return (0, next_util_1.nextHandler)(req, res); });
                 next_util_1.nextApp.prepare().then(function () {
                     payload_1.default.logger.info('Next.js started');
                     app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
+                            payload_1.default.logger.info("Next.js App URL: ".concat(process.env.NEXT_PUBLIC_SERVER_URL));
                             return [2 /*return*/];
                         });
                     }); });

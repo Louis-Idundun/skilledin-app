@@ -4,8 +4,8 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import dotenv from 'dotenv'
-import { Users } from './collections/Users'
 //import { Products } from './collections/Products/Products'
+//import { Users } from './collections/users'
 //import { Media } from './collections/Media'
 //import { ProductFiles } from './collections/ProductFile'
 //import { Orders } from './collections/Orders'
@@ -16,12 +16,12 @@ dotenv.config({
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-  collections: [Users], //add product, productfiles, orders, media and users to the list of collection
+  collections: [], //add product, productfiles, orders, media and users to the list of collection
   routes: {
     admin: '/sell',
   },
   admin: {
-    user: 'users',
+  //  user: 'users',
     bundler: webpackBundler(),
     meta: {
       titleSuffix: '- SkilledIn',

@@ -50,14 +50,14 @@ const start = async () => {
     //stripeWebhookHandler
  // )
 
-  await payload.({
-    secret: process.env.PAYLOAD_SECRET || 'default-secret',
-    db: process.env.MONGO_URL ||,
-    express: app, // Attach Payload to the Express app
-    onInit: async (cms) => {
-      cms.logger.info(`Admin URL: ${cms.getAdminURL()}`);
-    },
-  });
+  // await payload.({
+  //   secret: process.env.PAYLOAD_SECRET || 'default-secret',
+  //   db: process.env.MONGO_URL ||,
+  //   express: app, // Attach Payload to the Express app
+  //   onInit: async (cms) => {
+  //     cms.logger.info(`Admin URL: ${cms.getAdminURL()}`);
+  //   },
+  // });
 const payloads = await getPayloadClient({
     initOptions: {
       express: app,
